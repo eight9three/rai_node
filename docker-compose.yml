@@ -1,0 +1,17 @@
+version: '2'
+
+services:
+
+  rai_node:
+    build: ./
+    image: rai_node
+    command: /rai_node --daemon
+    restart: always
+    ports:
+      - "7075:7075"
+      - "7075:7075/udp"
+      - "127.0.0.1:7076:7076"
+    volumes:
+      - ./data/:/root
+    container_name: rai_node
+    network_mode: "bridge"
